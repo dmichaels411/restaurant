@@ -1,39 +1,22 @@
 import './style.css';
+import createPageContent from './content';
+import displayMenu from './menu';
+import displayContact from './contact';
 
-const content = createElementWithId("div", "content");
-document.body.appendChild(content);
+createPageContent();
 
-const header = createElementWithId("div", "header");
-content.appendChild(header);
+const homeBtn = document.getElementById("home-btn");
+homeBtn.onclick = function() {
+    document.getElementById("body-content-title").textContent = "Restaurant Name";
+    document.getElementById("body-content-info").textContent = "This is a description of the restaurant.";
+};
 
-const body = createElementWithId("div", "body");
-content.appendChild(body);
+const menuBtn = document.getElementById("menu-btn");
+menuBtn.onclick = function() {
+    displayMenu();
+}
 
-const homeBtn = createElementWithId("button", "home-btn");
-homeBtn.textContent = "Home";
-header.appendChild(homeBtn);
-
-const menuBtn = createElementWithId("button", "menu-btn");
-menuBtn.textContent = "Menu";
-header.appendChild(menuBtn);
-
-const contactBtn = createElementWithId("button", "contact-btn");
-contactBtn.textContent = "Contact";
-header.appendChild(contactBtn);
-
-const bodyContent = createElementWithId("div", "body-content");
-body.appendChild(bodyContent);
-
-const bodyContentTitle = createElementWithId("div", "body-content-title");
-bodyContentTitle.textContent = "Restaurant Name";
-bodyContent.appendChild(bodyContentTitle);
-
-const bodyContentInfo = createElementWithId("div", "body-content-info");
-bodyContentInfo.textContent = "This is a description of the restaurant.";
-bodyContent.appendChild(bodyContentInfo);
-
-function createElementWithId(tag, id) {
-    const element = document.createElement(tag);
-    element.setAttribute("id", id);
-    return element;
+const contactBtn = document.getElementById("contact-btn");
+contactBtn.onclick = function() {
+    displayContact();
 }
